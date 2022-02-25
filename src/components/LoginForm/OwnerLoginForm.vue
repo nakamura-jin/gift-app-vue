@@ -32,6 +32,8 @@
               </validation-provider>
             </v-col>
 
+            <span class="pa-6 red--text font-weight-bold" v-if="error">{{ error }}</span>
+
             <v-col class="text-right">
               <v-btn
                 class="mr-6"
@@ -80,7 +82,6 @@ export default defineComponent({
         type: 'owner',
       } as LoginParams,
       show3: false,
-      error: '' as string,
       dialog: false
     }
   },
@@ -104,7 +105,15 @@ export default defineComponent({
     clear() {
       this.form.email = '',
       this.form.password = '',
+      this.$store.commit('ERROR_CLEAR');
       (this.$refs.obs as HTMLFormElement).reset();
+    }
+  },
+  computed: {
+    error () {
+      if(this.$store.state.error) {
+        return 'ログインに失敗しました'
+      }
     }
   }
 })

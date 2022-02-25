@@ -6,10 +6,10 @@
       clipped
     >
       <!--  -->
-      <!-- <AdminNav v-if="loginData.type_id == 1" />
+      <AdminNav v-if="loginData.type_id == 1" />
       <OwnerNav v-if="loginData.type_id == 2" />
       <UserNav v-if="loginData.type_id == 3" />
-      <NoLoggedInNav v-else /> -->
+      <NoLoggedInNav v-else />
     </v-navigation-drawer>
 
     <v-app-bar app color="primary" dark>
@@ -31,17 +31,16 @@
 import { defineComponent } from '@vue/composition-api'
 import Cookies from 'js-cookie'
 import HeaderNav from '@/components/Nav/HeaderNav.vue'
-import AdminNav from '@/components/Navbar/AdminNav.vue'
-import OwnerNav from '@/components/Navbar/OwnerNav.vue'
-import UserNav from '@/components/Navbar/UserNav.vue'
-import NoLoggedInNav from '@/components/Navbar/NoLoggedInNav.vue'
+import AdminNav from '@/components/Nav/AdminNav.vue'
+import OwnerNav from '@/components/Nav/OwnerNav.vue'
+import UserNav from '@/components/Nav/UserNav.vue'
+import NoLoggedInNav from '@/components/Nav/NoLoggedInNav.vue'
 
 
 
 export default defineComponent({
   name: 'App',
-  // components: { HeaderNav, AdminNav, OwnerNav, UserNav, NoLoggedInNav },
-  components: { HeaderNav },
+  components: { HeaderNav, AdminNav, OwnerNav, UserNav, NoLoggedInNav },
   data() {
     return {
       drawer: false

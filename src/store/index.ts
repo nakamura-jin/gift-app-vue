@@ -11,11 +11,22 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
+    error: '',
     loginData: [] as User[] | Owner[] | Admin[],
   },
 
 
   mutations: {
+    ERROR(state, data) {
+      setTimeout(() => {
+        state.error = data
+      }, 3000)
+    },
+
+    ERROR_CLEAR(state) {
+      state.error = ''
+    },
+
     LOGIN(state, data) {
       state.loginData = data
     },
@@ -37,6 +48,7 @@ export default new Vuex.Store({
     },
 
     async login({ commit }, { email, password, type }) {
+      try {
         const response = await login({
           email: email,
           password: password,
@@ -44,6 +56,9 @@ export default new Vuex.Store({
         })
         Cookies.set('_myapp_token', response.access_token)
         commit('LOGIN', response.loginData)
+      } catch (err) {
+        commit('ERROR', err)
+      }
     },
   },
   modules: {},

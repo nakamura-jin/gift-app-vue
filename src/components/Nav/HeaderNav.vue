@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div v-if="loginData.length == 0">
+    <div v-if="loginData.length == 0" >
       <v-btn text to="/login" data-test="login">Login</v-btn>
       <v-btn text to="/register">Register</v-btn>
     </div>
