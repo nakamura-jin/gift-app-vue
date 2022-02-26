@@ -10,8 +10,7 @@ import OwnerMenu from '../views/Owner/OwnerMenu.vue';
 import OwnerMenuCreate from '../views/Owner/OwnerMenuCreate.vue';
 import OwnerProductsStock from '../views/Owner/OwnerProductsStock.vue';
 import Detail from '../views/Detail.vue';
-
-
+import Purchased from '../views/Purchased.vue';
 
 
 Vue.use(VueRouter);
@@ -64,6 +63,12 @@ const routes: Array<RouteConfig> = [
     path: '/detail',
     name: 'Detail',
     component: Detail,
+    beforeEnter: Guard.auth
+  },
+  {
+    path: '/purchased',
+    name: 'Purchased',
+    component: Purchased,
     beforeEnter: Guard.auth
   },
 ];

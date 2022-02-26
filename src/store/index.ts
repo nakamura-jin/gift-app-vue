@@ -10,6 +10,8 @@ import Menu, { MenuResponse } from '@/modules/menus';
 import { getMenus, getOwnerMenus, getMenuDetail, updateStockQuantity } from '@/apis/menu_apis';
 import Stock from '@/modules/stocks';
 import { PurchaseResponse, Purchase, sendMail } from '@/apis/checkout_apis';
+import { createGift, getSelectedGift } from '@/apis/gift_apis';
+import { GiftResponse } from '@/modules/gifts';
 
 
 
@@ -25,6 +27,7 @@ export default new Vuex.Store({
     menuDetail: [] as Menu[],
     purchase: [] as PurchaseResponse[],
     quantity: null,
+    purchaseGift: [] as GiftResponse[],
 
   },
 
@@ -89,6 +92,10 @@ export default new Vuex.Store({
     SET_QUANTITY(state, data) {
       state.quantity = data
     },
+
+    SET_PURCHASE_GIFT(state, data) {
+      state.purchaseGift = data
+    },
   },
 
 
@@ -145,6 +152,21 @@ export default new Vuex.Store({
         })
         Cookies.set('purchase', String(response.id))
         commit('PURCHASE', response)
+      } catch (err) {
+        return err
+      }
+    },
+
+    async createPurchasedGift({ commit }) {
+      try {
+        const id = Cookies.get('purchase')
+        const response = await createGift({
+          purchase_id: id as string,
+          display: 1
+        })
+        commit('SET_PURCHASE_GIFT', response)
+        await sendMail(response.url)
+        Cookies.remove('purchase')
       } catch (err) {
         return err
       }
