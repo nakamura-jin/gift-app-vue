@@ -7,8 +7,8 @@
     >
       <!--  -->
       <AdminNav v-if="loginData.type_id == 1" />
-      <OwnerNav v-if="loginData.type_id == 2" />
-      <UserNav v-if="loginData.type_id == 3" />
+      <OwnerNav v-else-if="loginData.type_id == 2" />
+      <UserNav v-else-if="loginData.type_id == 3" />
       <NoLoggedInNav v-else />
     </v-navigation-drawer>
 
@@ -68,3 +68,12 @@ export default defineComponent({
   }
 })
 </script>
+
+<style>
+  .center {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+</style>

@@ -5,6 +5,11 @@ import Home from "../views/Home.vue";
 import Login from '../views/Auth/Login.vue';
 import Register from '../views/Auth/Register.vue';
 import RegistrationComplete from '../views/Auth/RegistrationComplete.vue';
+import OwnerHome from '../views/Owner/OwnerHome.vue';
+import OwnerMenu from '../views/Owner/OwnerMenu.vue';
+import OwnerMenuCreate from '../views/Owner/OwnerMenuCreate.vue';
+import OwnerProductsStock from '../views/Owner/OwnerProductsStock.vue';
+import Detail from '../views/Detail.vue';
 
 
 
@@ -32,6 +37,34 @@ const routes: Array<RouteConfig> = [
     path: '/login',
     name: 'Login',
     component: Login
+  },
+  {
+    path: '/owner/:id',
+    name: 'OwnerHome',
+    component: OwnerHome,
+    props: true,
+    beforeEnter: Guard.auth
+  },
+  {
+    path: '/owner/:id/menu',
+    name: 'OwnerMenu',
+    component: OwnerMenu,
+  },
+  {
+    path: '/owner/menu/create',
+    name: 'OwnerMenuCreate',
+    component: OwnerMenuCreate,
+  },
+  {
+    path: '/owner/:id/products_stock',
+    name: 'OwnerProductsStock',
+    component: OwnerProductsStock,
+  },
+  {
+    path: '/detail',
+    name: 'Detail',
+    component: Detail,
+    beforeEnter: Guard.auth
   },
 ];
 
