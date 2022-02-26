@@ -82,33 +82,6 @@
         </v-list-item>
     </v-list-group>
 
-<!-------------------- ユーザー -------------------->
-    <!-- <v-list-group
-      :value="true"
-      prepend-icon="mdi-account-circle"
-    >
-      <template v-slot:activator>
-        <v-list-item-title>ユーザー</v-list-item-title>
-      </template>
-
-      <v-list-item
-        v-for="(user, i) in users"
-        :key="i"
-        link
-        :to="user.link"
-      >
-
-      <v-list-item-title v-text="user.text" class="text-center"></v-list-item-title>
-
-      <v-list-item-icon>
-        <v-icon v-text="user.icon"></v-icon>
-      </v-list-item-icon>
-
-
-      </v-list-item>
-
-    </v-list-group> -->
-
     </v-list>
   </v-card>
 </template>
@@ -122,7 +95,6 @@ export default defineComponent({
     return {
       selectedItem: 0,
       products: [
-        // { text: '商品一覧', icon: 'mdi-clipboard-list-outline', link: `/owner/${this.$route.params.id}/menu` },
         { text: '商品一覧', icon: 'mdi-clipboard-list-outline', link: `/owner/${this.$store.state.loginData.id}/menu` },
         { text: '在庫管理', icon: 'mdi-clipboard-list-outline', link: `/owner/${this.$store.state.loginData.id}/products_stock` },
       ],

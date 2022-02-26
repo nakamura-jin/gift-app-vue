@@ -59,6 +59,7 @@ export default defineComponent({
         { text: 'リスト', icon: 'mdi-clipboard-list-outline', link: '/admin/all_lists'},
         { text: 'コンタクト', icon: 'mdi-email', link: '/contact' },
         { text: 'お知らせ', icon: 'mdi-folder-account', link: '/create/news'},
+        { text: 'オーナー追加', icon: 'mdi-account', link: '/admin/owner/register'},
       ]
     }
   },

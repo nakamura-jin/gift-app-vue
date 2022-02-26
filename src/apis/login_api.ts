@@ -25,6 +25,11 @@ export const createUser: (params: UserCreateParams) => Promise<User> = async (pa
   return response.data
 }
 
+export const createOwner: (params: UserCreateParams) => Promise<User> = async (params: UserCreateParams) => {
+  const response = await axios.post('/owner/register', { name: params.name, email: params.email, password: params.password })
+  return response.data
+}
+
 export interface LoginParams {
   email: string
   password: string

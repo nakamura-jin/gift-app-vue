@@ -15,6 +15,9 @@ import AdminHome from '../views/Admin/AdminHome.vue';
 import AdminNews from '../views/Admin/AdminNews.vue';
 import AdminSendEmail from '../views/Admin/AdminSendEmail.vue';
 import AllUserLists from '../views/Admin/AllUserLists.vue'
+import OwnerRegister from '../views/Admin/OwnerRegister.vue'
+import RegistrationCompleteOwner from '../views/Admin/RegistrationCompleteOwner.vue'
+
 
 
 
@@ -97,6 +100,18 @@ const routes: Array<RouteConfig> = [
     path: '/admin/all_lists',
     name: 'AllUserLists',
     component: AllUserLists,
+    beforeEnter: Guard.auth
+  },
+  {
+    path: '/admin/owner/register',
+    name: 'OwnerRegister',
+    component: OwnerRegister,
+    beforeEnter: Guard.auth
+  },
+  {
+    path: '/registration_complete_owner',
+    name: 'RegistrationCompleteOwner',
+    component: RegistrationCompleteOwner,
     beforeEnter: Guard.auth
   },
 ];
