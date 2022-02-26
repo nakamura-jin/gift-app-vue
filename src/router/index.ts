@@ -11,6 +11,11 @@ import OwnerMenuCreate from '../views/Owner/OwnerMenuCreate.vue';
 import OwnerProductsStock from '../views/Owner/OwnerProductsStock.vue';
 import Detail from '../views/Detail.vue';
 import Purchased from '../views/Purchased.vue';
+import AdminHome from '../views/Admin/AdminHome.vue';
+import AdminNews from '../views/Admin/AdminNews.vue';
+import AdminSendEmail from '../views/Admin/AdminSendEmail.vue';
+import AllUserLists from '../views/Admin/AllUserLists.vue'
+
 
 
 Vue.use(VueRouter);
@@ -69,6 +74,29 @@ const routes: Array<RouteConfig> = [
     path: '/purchased',
     name: 'Purchased',
     component: Purchased,
+    beforeEnter: Guard.auth
+  },
+  {
+    path: '/admin',
+    name: 'AdminHome',
+    component: AdminHome,
+  },
+  {
+    path: '/create/news',
+    name: 'AdminNews',
+    component: AdminNews,
+    beforeEnter: Guard.auth
+  },
+  {
+    path: '/contact',
+    name: 'AdminSendEmail',
+    component: AdminSendEmail,
+    beforeEnter: Guard.auth
+  },
+  {
+    path: '/admin/all_lists',
+    name: 'AllUserLists',
+    component: AllUserLists,
     beforeEnter: Guard.auth
   },
 ];

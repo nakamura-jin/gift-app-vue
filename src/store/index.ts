@@ -12,7 +12,7 @@ import Stock from '@/modules/stocks';
 import { PurchaseResponse, Purchase, sendMail } from '@/apis/checkout_apis';
 import { createGift, getSelectedGift } from '@/apis/gift_apis';
 import { GiftResponse } from '@/modules/gifts';
-
+import { userLists, ownerLists, ListsResponse, getAllNews, News } from '@/apis/admin_lists';
 
 
 Vue.use(Vuex);
@@ -28,7 +28,9 @@ export default new Vuex.Store({
     purchase: [] as PurchaseResponse[],
     quantity: null,
     purchaseGift: [] as GiftResponse[],
-
+    allNews: [] as News[],
+    allUser: [] as ListsResponse[],
+    allOwner: [] as ListsResponse[],
   },
 
 
@@ -95,6 +97,18 @@ export default new Vuex.Store({
 
     SET_PURCHASE_GIFT(state, data) {
       state.purchaseGift = data
+    },
+
+    ALL_NEWS(state, data) {
+      state.allNews = data
+    },
+
+    ALL_USER(state, data) {
+      state.allUser = data
+    },
+
+    ALL_OWNER(state, data) {
+      state.allOwner = data
     },
   },
 
@@ -170,6 +184,21 @@ export default new Vuex.Store({
       } catch (err) {
         return err
       }
+    },
+
+    async getNews({ commit }) {
+      const response = await getAllNews()
+      commit('ALL_NEWS', response)
+    },
+
+    async getAllUser({ commit }) {
+      const response = await userLists()
+      commit('ALL_USER', response)
+    },
+
+    async getAllOwner({ commit }) {
+      const response = await ownerLists()
+      commit('ALL_OWNER', response)
     },
   },
   modules: {},
