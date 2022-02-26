@@ -26,8 +26,6 @@
         color="primary"
       >
 
-<!-------------------- お店 -------------------->
-
         <v-list-item to="/">
 
         <v-list-item-icon>
@@ -38,7 +36,6 @@
 
         </v-list-item>
 
-<!-------------------- 従業員 -------------------->
     <v-list-group
         :value="true"
         prepend-icon="mdi-cog"
@@ -64,33 +61,6 @@
         </v-list-item>
     </v-list-group>
 
-<!-------------------- ユーザー -------------------->
-    <!-- <v-list-group
-      :value="true"
-      prepend-icon="mdi-account-circle"
-    >
-      <template v-slot:activator>
-        <v-list-item-title>ユーザー</v-list-item-title>
-      </template>
-
-      <v-list-item
-        v-for="(user, i) in users"
-        :key="i"
-        link
-        :to="user.link"
-      >
-
-      <v-list-item-title v-text="user.text" class="text-center"></v-list-item-title>
-
-      <v-list-item-icon>
-        <v-icon v-text="user.icon"></v-icon>
-      </v-list-item-icon>
-
-
-      </v-list-item>
-
-    </v-list-group> -->
-
     </v-list>
   </v-card>
 </template>
@@ -105,7 +75,7 @@ export default defineComponent({
       selectedItem: 0,
       settings: [
         { text: 'パスワード変更', icon: 'mdi-lock', link: '/change_password'},
-        { text: 'メールアドレス変更', icon: 'mdi-email', link: '/change_email'},
+        // { text: 'メールアドレス変更', icon: 'mdi-email', link: '/change_email'},
       ]
     }
   },

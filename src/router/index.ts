@@ -17,6 +17,7 @@ import AdminSendEmail from '../views/Admin/AdminSendEmail.vue';
 import AllUserLists from '../views/Admin/AllUserLists.vue'
 import OwnerRegister from '../views/Admin/OwnerRegister.vue'
 import RegistrationCompleteOwner from '../views/Admin/RegistrationCompleteOwner.vue'
+import ChangePassword from '../views/ChangePassword.vue'
 
 
 
@@ -112,6 +113,12 @@ const routes: Array<RouteConfig> = [
     path: '/registration_complete_owner',
     name: 'RegistrationCompleteOwner',
     component: RegistrationCompleteOwner,
+    beforeEnter: Guard.auth
+  },
+  {
+    path: '/change_password',
+    name: 'ChangePassword',
+    component: ChangePassword,
     beforeEnter: Guard.auth
   },
 ];
