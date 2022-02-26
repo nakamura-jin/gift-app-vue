@@ -3,8 +3,8 @@
     <template v-slot:default>
       <thead>
         <tr>
-          <th class="text-center" width="10%">
-            id
+          <th class="text-center" width="6%">
+            <span class="text-md-subtitle-1">id</span>
           </th>
           <th class="text-center">
             名前
@@ -12,17 +12,17 @@
           <th class="text-center" v-show="$vuetify.breakpoint.mobile ? false : true">
             メールアドレス
           </th>
-          <th class="text-center" width="10%">
+          <th class="text-center">
             麺集
           </th>
-          <th class="text-center" width="10%">
+          <th class="text-center">
             削除
           </th>
         </tr>
       </thead>
       <tbody>
         <tr
-          v-for="user in allUsers"
+          v-for="user in allOwners"
           :key="user.id"
           class="text-center"
         >
@@ -41,13 +41,13 @@
 import { defineComponent } from '@vue/composition-api'
 import { ListsResponse } from '@/apis/admin_lists'
 
-export interface UserListsMethods {
-  selectData: string
-  getAllUser: void;
+export interface OwnerListsMethods {
+  getAllOwner: void;
+  getEmail: void
 }
 
 export default defineComponent({
-  name: 'UserListsTable',
+  name: 'OwnerListsTable',
   props: {
     selectData: {
       type: String,
@@ -55,24 +55,28 @@ export default defineComponent({
     }
   },
   computed: {
-    allUsers(): Array<ListsResponse> {
-      let user = []
-      for(let i = 0; i < this.$store.state.allUser.length; i++) {
-        let select = this.$store.state.allUser[i]
+    allOwners(): Array<ListsResponse> {
+      let owner = []
+      for(let i = 0; i < this.$store.state.allOwner.length; i++) {
+        let select = this.$store.state.allOwner[i]
         if(select.email.indexOf(this.selectData) !== -1 || select.name.indexOf(this.selectData) !== -1) {
-          user.push(select)
+          owner.push(select)
         }
       }
-      return user
-    },
+
+      return owner
+    }
   },
   methods: {
-    getAllUser() {
-      this.$store.dispatch('getAllUser')
+    getAllOwner() {
+      this.$store.dispatch('getAllOwner')
+    },
+    getEmail(email: string) {
+      console.log(email)
     }
   },
   created() {
-    this.getAllUser()
+    this.getAllOwner()
   }
 })
 </script>
